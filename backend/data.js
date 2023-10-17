@@ -1,0 +1,75 @@
+const data = {
+  videos: [
+    {
+      videoName: 'videoSatu',
+      videoSlug: 'video-satu',
+      description: 'film aksi satu',
+      stock: 1,
+      price: 25000,
+    },
+    {
+      videoName: 'videoDua',
+      videoSlug: 'video-dua',
+      description: 'film aksi dua',
+      stock: 2,
+      price: 26000,
+    },
+    {
+      videoName: 'videoTiga',
+      videoSlug: 'video-tiga',
+      description: 'film aksi tiga',
+      stock: 3,
+      price: 27000,
+    },
+    {
+      videoName: 'videoEmpat',
+      videoSlug: 'video-empat',
+      description: 'film aksi empat',
+      stock: 4,
+      price: 28000,
+    },
+    {
+      videoName: 'videoLima',
+      videoSlug: 'video-lima',
+      description: 'film aksi lima',
+      stock: 5,
+      price: 29000,
+    },
+    {
+      videoName: 'videoEnam',
+      videoSlug: 'video-enam',
+      description: 'film aksi enam',
+      stock: 6,
+      price: 30000,
+    },
+    {
+      videoName: 'videoTujuh',
+      videoSlug: 'video-tujuh',
+      description: 'film aksi tujuh',
+      stock: 7,
+      price: 31000,
+    },
+    {
+      videoName: 'videoDelapan',
+      videoSlug: 'video-delapan',
+      description: 'film aksi delapan',
+      stock: 8,
+      price: 32000,
+    },
+    {
+      videoName: 'videoSembilan',
+      videoSlug: 'video-sembilan',
+      description: 'film aksi sembilan',
+      stock: 9,
+      price: 33000,
+    },
+    {
+      videoName: 'videoSepuluh',
+      videoSlug: 'video-sepuluh',
+      description: 'film aksi sepuluh',
+      stock: 10,
+      price: 34000,
+    },
+  ],
+};
+export default data;

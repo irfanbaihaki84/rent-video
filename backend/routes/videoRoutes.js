@@ -11,7 +11,7 @@ videoRouter.get('/', async (req, res) => {
 });
 
 // menampilkan data dengan cara pagination / perhalaman
-videoRouter.get('/videos', async (req, res) => {
+videoRouter.get(`/videos`, async (req, res) => {
   // current page
   const page = parseInt(req.query.page) || 1;
   const limit = parseInt(req.query.limit) || 3;

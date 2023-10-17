@@ -1,5 +1,6 @@
 project rent video
 
+#====AWAL BACKEND=====#
 buat folder rent-video
 
 buat folder backend dan masuk ke folder backend
@@ -10,7 +11,7 @@ npm i express mongoose dotenv --save
 
 npm i nodemon --save-dev
 
-buka file package.json dan tambahkan "type" dan "start"
+buka file package.json dan tambahkan "type" dan "start":
 "name": "backend",
 =>"type": "module",<=
 "version": "1.0.0",
@@ -20,9 +21,9 @@ buka file package.json dan tambahkan "type" dan "start"
 =>"start": "nodemon server.js",<=
 "test": "echo \"Error: no test specified\" && exit 1"
 },
-=========
+#=========#
 
-buat file server.js dan tambahkan (di dalam folder backend)
+buat file server.js dan tambahkan (di dalam folder backend):
 import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
@@ -46,12 +47,12 @@ const port = process.env.PORT;
 app.listen(port, () => {
 console.log(`server at http://localhost:${port}`);
 });
-=========
+#=========#
 
 buat file .env dan tambahkan (di dalam folder backend)
 PORT=3002
 MONGODB_URI=mongodb://127.0.0.1:27017/rent
-=========
+#=========#
 
 buat folder models di dalam folder backend
 
@@ -73,7 +74,7 @@ timestamps: true,
 
 const Video = mongoose.model('Video', videoSchema);
 export default Video;
-=========
+#=========#
 
 buat file data.js dan tambahkan (di dalam folder backend)
 const data = {
@@ -151,7 +152,7 @@ price: 34000,
 ],
 };
 export default data;
-=========
+#=========#
 
 buat folder routes di dalam folder backend
 
@@ -228,3 +229,4 @@ res.send({ message: 'Video not found!' });
 });
 
 export default videoRouter;
+#=========#

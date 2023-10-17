@@ -401,6 +401,12 @@ Delete
 #====AKHIR FRONTEND=====#
 
 #====AWAL GITHUB=====#
+note: bila error github:
+Control Panel\All Control Panel Items\Credential Manager
+add a generic credential:
+hapus
+git:https://github.com
+
 cara remote / kendali dari jauh repository anda:
 git remote set-url origin https://github.com/irfanbaihaki84/rent-video.git
 

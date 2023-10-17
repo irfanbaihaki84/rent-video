@@ -48,8 +48,8 @@ videoRouter.get('/videos', async (req, res) => {
 });
 
 // menampilkan data dari id yang di cari
-videoRouter.get('/:id', async (req, res) => {
-  const videos = await Video.findById(req.params.id);
+videoRouter.get('/:videoId', async (req, res) => {
+  const videos = await Video.findById(req.params.videoId);
   res.send(videos);
 });
 
@@ -63,15 +63,15 @@ videoRouter.get('/seed', async (req, res) => {
 
 // menyimpan data pada collection video
 videoRouter.post('/create', async (req, res) => {
-  let test = { videoName: req.body.videoName };
+  let test = [req.body.videoName];
   console.log('videoName: ', test);
 
   const newVideo = new Video({
     videoName: req.body.videoName,
     videoSlug: req.body.videoSlug,
     description: req.body.description,
-    videoImage: req.body.videoImage,
-    videoUrl: req.body.videoUrl,
+    image: req.body.image,
+    url: req.body.url,
     stock: req.body.stock,
     price: req.body.price,
   });
@@ -84,12 +84,12 @@ videoRouter.post('/create', async (req, res) => {
   //   videoName: video.videoName,
   //   videoSlug: video.videoSlug,
   //   description: video.description,
-  //   videoImage: video.videoImage,
-  //   videoUrl: video.videoUrl,
+  //   image: video.image,
+  //   url: video.url,
   //   stock: video.stock,
   //   price: video.price,
   // });
-  res.send(newVideo);
+  // res.send(newVideo);
 
   // console.log(error.message);
 });

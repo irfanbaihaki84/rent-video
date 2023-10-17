@@ -22,8 +22,8 @@ export default function Videos() {
     setVideos(result.data);
   };
 
-  const editVideo = (id) => {
-    navigate(`/productedit/${id}`);
+  const editVideo = (videoId) => {
+    navigate(`/videoEdit/${videoId}`);
   };
 
   const deleteVideo = async (videoId) => {

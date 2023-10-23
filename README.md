@@ -431,3 +431,24 @@ upload data ke repository:
 git push origin main
 
 #====AKHIR GITHUB=====#
+
+#====AWAL API HISTORY=====#
+tampilkan seluruh videos collection
+GET http://localhost:3002/api/videos/
+
+tempilkan berdasarkan id dari videos collection
+GET http://localhost:3002/api/videos/652a696c9fbf741aaa22264b
+
+tampilkan 3 data dari videos collection
+GET http://localhost:3002/api/videos/videos?page=3&limit=3
+
+simpan data ke videos collection
+POST http://localhost:3002/api/videos/create
+
+hapus data dari videos collection
+DELETE http://localhost:3002/api/videos/delete/652ce041a32cf171d2bf6eef
+
+update data ke videos collection
+PUT http://localhost:3002/api/videos/652a696c9fbf741aaa22264b
+
+#====AKHIR API HISTORY=====#

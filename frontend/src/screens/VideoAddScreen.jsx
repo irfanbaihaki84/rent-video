@@ -8,12 +8,14 @@ export default function VideoAddScreen() {
   const [videoSlug, setVideoSlug] = useState('');
   const [description, setDescription] = useState('');
   const [image, setImage] = useState('');
-  const [url, setUrl] = useState('');
+  // const [url, setUrl] = useState('');
   const [stock, setStock] = useState('');
   const [price, setPrice] = useState('');
 
   const addHandler = async (e) => {
     e.prventDefault();
+    // const formData = new FormData();
+    // formData.append('image', image);
     try {
       const { data } = await axios.post(
         'http://localhost:3002/api/videos/create',
@@ -22,12 +24,17 @@ export default function VideoAddScreen() {
           videoSlug,
           description,
           image,
-          url,
+          // url,
           stock,
           price,
+        },
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
         }
       );
-      console.log('data: ', data);
+      console.log(data);
       navigate('/');
     } catch (error) {
       console.log(error.message);
@@ -79,7 +86,7 @@ export default function VideoAddScreen() {
               placeholder="Image"
             />
           </div>
-          <div className="form-group">
+          {/* <div className="form-group">
             <p className="form-label">URL</p>
             <input
               type="text"
@@ -88,7 +95,7 @@ export default function VideoAddScreen() {
               onChange={(e) => setUrl(e.target.value)}
               placeholder="URL"
             />
-          </div>
+          </div> */}
 
           <div className="form-group">
             <p className="form-label">Stock</p>

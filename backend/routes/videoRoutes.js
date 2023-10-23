@@ -1,5 +1,7 @@
 import express from 'express';
 import Video from '../models/videoModel.js';
+import path from 'path';
+// import { createHash } from 'crypto';
 // import data from '../data.js';
 
 const videoRouter = express.Router();
@@ -63,35 +65,55 @@ videoRouter.get('/seed', async (req, res) => {
 
 // menyimpan data pada collection video
 videoRouter.post('/create', async (req, res) => {
-  let test = [req.body.videoName];
-  console.log('videoName: ', test);
+  const videoImage = req.files.image;
+  if (videoImage === null) return (videoImage = '');
+  // const videoImage = req.body.image;
+  console.log('videoImage: ', videoImage);
+  console.log('videoImage.name: ', videoImage.name);
+  console.log('videoImage.size: ', videoImage.size);
+
+  const extImage = path.extname(videoImage.name);
+  console.log('extImage: ', extImage);
+
+  // const nameImage = createHash('md5').update(videoImage).digest('hex') + extImage;
+  const nameImage = videoImage.md5 + extImage;
+  console.log('nameImage: ', nameImage);
+
+  const videoUrl = `${req.protocol}://${req.get('host')}/assets/${nameImage}`;
+  console.log('videoUrl: ', videoUrl);
+
+  videoImage.mv(`./public/assets/${nameImage}`);
 
   const newVideo = new Video({
     videoName: req.body.videoName,
     videoSlug: req.body.videoSlug,
     description: req.body.description,
-    image: req.body.image,
-    url: req.body.url,
+    image: nameImage,
+    url: videoUrl,
     stock: req.body.stock,
     price: req.body.price,
   });
-  console.log('newVideo: ', newVideo);
-  console.log('videoName: ', newVideo.videoName);
+  // console.log(newVideo.videoName);
+  // console.log(newVideo.image);
+  // console.log(newVideo.url);
 
   // const video = await newVideo.save();
-  // res.send({
-  //   _id: video._id,
-  //   videoName: video.videoName,
-  //   videoSlug: video.videoSlug,
-  //   description: video.description,
-  //   image: video.image,
-  //   url: video.url,
-  //   stock: video.stock,
-  //   price: video.price,
-  // });
-  // res.send(newVideo);
-
-  // console.log(error.message);
+  res.send({
+    videoName: newVideo.videoName,
+    // videoName: video.videoName,
+    videoSlug: newVideo.videoSlug,
+    // videoSlug: video.videoSlug,
+    description: newVideo.description,
+    // description: video.description,
+    image: newVideo.image,
+    // image: video.image,
+    url: newVideo.url,
+    // url: video.url,
+    stock: newVideo.stock,
+    // stock: video.stock,
+    price: newVideo.price,
+    // price: video.price,
+  });
 });
 
 // update data pada collection video

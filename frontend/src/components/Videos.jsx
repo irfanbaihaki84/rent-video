@@ -6,15 +6,12 @@ export default function Videos() {
   const navigate = useNavigate();
   const [videos, setVideos] = useState([]);
   console.log('test0: ', videos);
-  const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(2);
+  // const [page, setPage] = useState(1);
+  // const [limit, setLimit] = useState(2);
 
   useEffect(() => {
     try {
       getVideos();
-      // getVideoPage();
-      // console.log('test1: ', videos);
-      // console.log('test2: ', videos.length);
     } catch (error) {
       console.log(error.message);
     }
@@ -25,12 +22,12 @@ export default function Videos() {
     setVideos(result.data);
   };
 
-  const getVideoPage = async () => {
-    const result = await axios.get(
-      `http://localhost:3002/api/videos/videos?page=${page}&limit=${limit}`
-    );
-    setVideos(result.data);
-  };
+  // const getVideoPage = async () => {
+  //   const result = await axios.get(
+  //     `http://localhost:3002/api/videos/videos?page=${page}&limit=${limit}`
+  //   );
+  //   setVideos(result.data);
+  // };
 
   const editVideo = (videoId) => {
     navigate(`/videoEdit/${videoId}`);

@@ -6,10 +6,11 @@ export default function VideoEditScreen() {
   const params = useParams();
   const navigate = useNavigate();
   const { videoId } = params;
-  //   console.log('params0: ', videoId);
+  console.log('params0: ', videoId);
 
   const [videos, setVideos] = useState([]);
-  const [id, setId] = useState();
+  console.log('videos1: ', videos);
+
   const [videoName, setVideoName] = useState('');
   const [videoSlug, setVideoSlug] = useState('');
   const [description, setDescription] = useState('');
@@ -18,27 +19,10 @@ export default function VideoEditScreen() {
   const [stock, setStock] = useState('');
   const [price, setPrice] = useState('');
 
-  useEffect(() => {
-    getVideoById();
-    setId(videos._id);
-    setVideoName(videos.videoName);
-    setVideoSlug(videos.videoSlug);
-    setDescription(videos.description);
-    setStock(videos.stock);
-    setPrice(videos.price);
-  }, [videoId]);
-
-  const getVideoById = async () => {
-    const result = await axios.get(
-      `http://localhost:3002/api/videos/${videoId}`
-    );
-    setVideos(result.data);
-  };
-
   const editHandler = async () => {
     try {
       const { data } = await axios.put(
-        `http://localhost:3002/api/videos/update/${id}`,
+        `http://localhost:3002/api/videos/update/${videoId}`,
         {
           videoName,
           videoSlug,
@@ -56,9 +40,29 @@ export default function VideoEditScreen() {
     }
   };
 
+  useEffect(() => {
+    const getVideoById = async () => {
+      try {
+        const { data } = await axios.get(
+          `http://localhost:3002/api/videos/${videoId}`
+        );
+        setVideos(data);
+        setVideoName(data.videoName);
+        // console.log('videoName: ', data.videoName);
+        setVideoSlug(data.videoSlug);
+        setDescription(data.description);
+        setStock(data.stock);
+        setPrice(data.price);
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    getVideoById();
+  }, [videoId]);
+
   return (
     <div className="container">
-      <h1>Video Edit {id}</h1>
+      <h1>Video Edit {videoId}</h1>
       <div className="content">
         <form onSubmit={editHandler}>
           <div className="form-group">

@@ -13,7 +13,7 @@ export default function VideoAddScreen() {
   const [price, setPrice] = useState('');
 
   const addHandler = async (e) => {
-    e.prventDefault();
+    e.preventDefault();
     // const formData = new FormData();
     // formData.append('image', image);
     try {
@@ -54,6 +54,7 @@ export default function VideoAddScreen() {
               value={videoName}
               onChange={(e) => setVideoName(e.target.value)}
               placeholder="Video Name"
+              required
             />
           </div>
           <div className="form-group">

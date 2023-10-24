@@ -19,7 +19,8 @@ export default function VideoEditScreen() {
   const [stock, setStock] = useState('');
   const [price, setPrice] = useState('');
 
-  const editHandler = async () => {
+  const editHandler = async (e) => {
+    e.preventDefault();
     try {
       const { data } = await axios.put(
         `http://localhost:3002/api/videos/update/${videoId}`,
@@ -28,7 +29,7 @@ export default function VideoEditScreen() {
           videoSlug,
           description,
           image,
-          url,
+          // url,
           stock,
           price,
         }
@@ -113,6 +114,7 @@ export default function VideoEditScreen() {
               value={url}
               onChange={(e) => setUrl(e.target.value)}
               placeholder="URL"
+              disabled
             />
           </div>
 

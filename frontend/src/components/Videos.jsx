@@ -59,8 +59,8 @@ export default function Videos() {
             <div className="card-body">
               <h3 className="card-title">{videos.videoName}</h3>
               <div className="card-item">
-                <p>stock: {videos.stock}</p>
-                <p>stock: {videos.price}</p>
+                <p>Stock: {videos.stock}</p>
+                <p>Price: {videos.price}</p>
               </div>
               <div className="card-button">
                 <button

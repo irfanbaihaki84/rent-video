@@ -8,13 +8,7 @@ const videoRouter = express.Router();
 
 // menampilkan seluruh data dari collection video
 videoRouter.get('/', async (req, res) => {
-  const videos = await Video.find({});
-  res.send(videos);
-});
-
-// menampilkan data dari id yang di cari
-videoRouter.get('/:videoId', async (req, res) => {
-  const videos = await Video.findById(req.params.videoId);
+  const videos = await Video.find();
   res.send(videos);
 });
 
@@ -153,41 +147,92 @@ videoRouter.delete('/delete/:id', async (req, res) => {
   }
 });
 
+// const ITEM_PERPAGE = 3
 // menampilkan data dengan cara pagination / perhalaman
-videoRouter.get(`/videos`, async (req, res) => {
-  // current page
-  const page = parseInt(req.query.page) || 1;
-  const limit = parseInt(req.query.limit) || 3;
-
-  // const { page = 1, limit = 3 } = req.query;
-
+videoRouter.get('/pagin', async (req, res) => {
+  // console.log('masuk PAGIN');
   try {
-    const startIndex = (page - 1) * limit;
-    const endIndex = page * limit;
-    let result = {};
+    const page = parseInt(req.query.page) || 1;
+    // console.log('page: ', page);
 
-    const videos = await Video.find();
-    console.log('videos.length: ', videos.length);
+    const pageSize = parseInt(req.query.limit) || 3;
+    // console.log('pageSize: ', pageSize);
 
-    if (endIndex < videos.length) {
-      result.next = {
-        page: page + 1,
-        limit: limit,
-      };
-    }
+    const skip = (page - 1) * pageSize;
+    // console.log('skip: ', skip);
 
-    if (startIndex < 0) {
-      result.previous = {
-        page: page - 1,
-        limit: limit,
-      };
-    }
+    // const total = await Video.estimatedDocumentCount();
+    const total = await Video.countDocuments();
+    // console.log('totol: ', total);
 
-    result = videos.slice(startIndex, endIndex);
-    res.json(result);
-  } catch (err) {
-    console.log(err.message);
+    const pages = Math.ceil(total / pageSize);
+    // console.log('pages: ', pages);
+
+    // untuk menampung suluruh query psrams di sini
+    let query = await Video.find().skip(skip).limit(pageSize);
+
+    const hasil = query;
+    // console.log('hasil: ', hasil);
+
+    res.status(200).json({
+      status: 'success',
+      count: hasil.length,
+      page,
+      pages,
+      pageSize,
+      data: hasil,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      status: 'error',
+      message: 'Server error',
+    });
   }
+});
+
+videoRouter.get(`/videos`, async (req, res) => {
+  console.log('masuk GET VIDEOS');
+  // try {
+  //   // current page
+  //   const page = parseInt(req.query.page) || 1;
+  //   const limit = parseInt(req.query.limit) || 2;
+
+  //   // const { page = 1, limit = 3 } = req.query
+
+  //   const startIndex = (page - 1) * limit;
+  //   const endIndex = page * limit;
+  //   let result = {};
+
+  //   const videos = await Video.find();
+  //   console.log('videos.length: ', videos.length);
+
+  //   if (endIndex < videos.length) {
+  //     result.next = {
+  //       page: page + 1,
+  //       limit: limit,
+  //     };
+  //   }
+
+  //   if (startIndex < 0) {
+  //     result.previous = {
+  //       page: page - 1,
+  //       limit: limit,
+  //     };
+  //   }
+
+  //   result = videos.slice(startIndex, endIndex);
+  //   console.log('server result: ', result);
+  //   res.json(result);
+  // } catch (err) {
+  //   console.log(err.message);
+  // }
+});
+
+// menampilkan data dari id yang di cari
+videoRouter.get('/:videoId', async (req, res) => {
+  const videos = await Video.findById(req.params.videoId);
+  res.send(videos);
 });
 
 export default videoRouter;

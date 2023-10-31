@@ -147,6 +147,7 @@ form {
   padding: 1.5rem 1rem 1rem 1rem;
   border: 1px solid #000;
   border-radius: 30px;
+  margin-bottom: 0.2em;
 }
 form input {
   height: 20px;
@@ -210,5 +211,15 @@ footer {
   .content {
     display: flex;
     justify-content: center;
+  }
+  .card-fluid {
+    flex-direction: column;
+  }
+  .img .card-img-fluid {
+    width: 100%;
+    padding-right: 0;
+  }
+  h1 {
+    font-size: 100%;
   }
 }

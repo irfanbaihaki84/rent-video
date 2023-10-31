@@ -24,7 +24,11 @@ function App() {
           <Route path="/videoEdit/:videoId" element={<VideoEditScreen />} />
         </Routes>
         <footer>
-          <p className="footer">Create by: Baihaki 2023</p>
+          <p className="footer">
+            Create by:{' '}
+            <a href="https://github.com/irfanbaihaki84/rent-video"> Baihaki </a>
+            2023
+          </p>
         </footer>
       </div>
     </BrowserRouter>

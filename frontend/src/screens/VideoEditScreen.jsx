@@ -63,7 +63,7 @@ export default function VideoEditScreen() {
 
   return (
     <div className="container">
-      <h1>Video Edit {videoId}</h1>
+      <h1>Id {videoId}</h1>
       <div className="content">
         <form onSubmit={editHandler}>
           <h1 className="form-title">Video Edit</h1>

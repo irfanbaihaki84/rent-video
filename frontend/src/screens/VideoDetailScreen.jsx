@@ -62,6 +62,7 @@ export default function VideoDetailScreen() {
           </div>
           <div className="card-body">
             <h3 className="card-title">{videoName}</h3>
+            <h4 className="card-title">{videoId}</h4>
             <h4 className="card-title">{videoSlug}</h4>
             <div className="card-item">
               <p>Stock: {stock}</p>

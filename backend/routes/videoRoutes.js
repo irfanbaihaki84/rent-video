@@ -191,44 +191,6 @@ videoRouter.get('/pagin', async (req, res) => {
   }
 });
 
-videoRouter.get(`/videos`, async (req, res) => {
-  console.log('masuk GET VIDEOS');
-  // try {
-  //   // current page
-  //   const page = parseInt(req.query.page) || 1;
-  //   const limit = parseInt(req.query.limit) || 2;
-
-  //   // const { page = 1, limit = 3 } = req.query
-
-  //   const startIndex = (page - 1) * limit;
-  //   const endIndex = page * limit;
-  //   let result = {};
-
-  //   const videos = await Video.find();
-  //   console.log('videos.length: ', videos.length);
-
-  //   if (endIndex < videos.length) {
-  //     result.next = {
-  //       page: page + 1,
-  //       limit: limit,
-  //     };
-  //   }
-
-  //   if (startIndex < 0) {
-  //     result.previous = {
-  //       page: page - 1,
-  //       limit: limit,
-  //     };
-  //   }
-
-  //   result = videos.slice(startIndex, endIndex);
-  //   console.log('server result: ', result);
-  //   res.json(result);
-  // } catch (err) {
-  //   console.log(err.message);
-  // }
-});
-
 // menampilkan data dari id yang di cari
 videoRouter.get('/:videoId', async (req, res) => {
   const videos = await Video.findById(req.params.videoId);

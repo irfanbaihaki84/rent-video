@@ -46,6 +46,7 @@ export default function VideoAddScreen() {
       <h1>Add Video</h1>
       <div className="content">
         <form onSubmit={addHandler}>
+          <h1 className="form-title">Add Video</h1>
           <div className="form-group">
             <p className="form-label">Video Name</p>
             <input
@@ -119,7 +120,7 @@ export default function VideoAddScreen() {
             />
           </div>
 
-          <div className="form-group">
+          <div className="form-group-btn">
             <button type="submit" className="btn-success">
               Save
             </button>

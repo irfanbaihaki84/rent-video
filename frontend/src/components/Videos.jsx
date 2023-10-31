@@ -14,6 +14,9 @@ export default function Videos() {
   const [limit, setLimit] = useState(3);
   const [pageCount, setPageCount] = useState(0);
 
+  const [id, setId] = useState('');
+  console.log('id: ', id);
+
   useEffect(() => {
     try {
       // getVideos();
@@ -49,6 +52,8 @@ export default function Videos() {
     setPage(pageData.data.page);
     setLimit(pageData.data.pageSize);
     setPageCount(pageData.data.pages);
+
+    setId(pageData.data.data._id);
   };
 
   function previousHandler() {
@@ -82,15 +87,22 @@ export default function Videos() {
   return (
     <div className="container">
       <h1>Video List</h1>
-
       <div className="content">
         {videos.map((video) => (
           <div className="card" key={video._id}>
             <div className="img">
-              <img className="card-img" src={video.url} alt={video.videoName} />
+              <a href={`/videoDetail/${video._id}`}>
+                <img
+                  className="card-img"
+                  src={video.url}
+                  alt={video.videoName}
+                />
+              </a>
             </div>
             <div className="card-body">
-              <h3 className="card-title">{video.videoName}</h3>
+              <a href={`/videoDetail/${video._id}`}>
+                <h3 className="card-title">{video.videoName}</h3>
+              </a>
               <div className="card-item">
                 <p>Stock: {video.stock}</p>
                 <p>Price: {video.price}</p>

@@ -22,14 +22,18 @@
   --info: #1569bd;
   --warning: #e5e900;
   --danger: #bd1515;
-  --bgcolor: #7a7a7a;
+  --bgcolor: #b1b1b1;
+  --card: #f758c2;
 }
 body {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  display: flex;
+  justify-content: center;
 }
 .container {
+  background-color: var(--bgcolor);
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -37,11 +41,13 @@ body {
   width: 1300px;
 }
 .content {
+  /* background-color: var(--info); */
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 }
 .card {
+  background-color: var(--card);
   width: 250px;
   display: flex;
   flex-direction: column;
@@ -50,16 +56,31 @@ body {
   padding: 0.5em;
   margin: 0.2em;
 }
+.card-fluid {
+  background-color: var(--card);
+  width: 100%;
+  display: flex;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  padding: 0.5em;
+  margin: 0.2em;
+}
 .card .img {
+  background-color: var(--bgcolor);
   height: 200px;
   width: 100%;
-  background-color: var(--bgcolor);
   border-radius: 8px;
 }
 .img .card-img {
   height: 200px;
   width: 100%;
   border-radius: 8px;
+}
+.img .card-img-fluid {
+  height: 200vh;
+  width: 30vw;
+  border-radius: 8px;
+  padding-right: 1.5rem;
 }
 .card-body .card-title {
   text-align: center;
@@ -87,7 +108,7 @@ button {
   transition: border-color 0.25s;
 }
 button:hover {
-  border-color: var(--bgcolor);
+  border-color: #000;
 }
 button:focus,
 button:focus-visible {
@@ -105,20 +126,48 @@ button:focus-visible {
 .btn-danger {
   background-color: var(--danger);
 }
-
+.nav-bar {
+  background-color: var(--success);
+  width: 100%;
+  padding: 2rem 0 0.5rem 0;
+}
+.nav-bar .nav-bar-link {
+  font-size: 2rem;
+  margin: 1rem 0.7rem 1rem 0.7rem;
+}
 a {
   font-weight: 500;
-  color: #646cff;
+  color: #000;
   text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+  color: var(--danger);
 }
-
-/* h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-} */
+form {
+  padding: 1.5rem 1rem 1rem 1rem;
+  border: 1px solid #000;
+  border-radius: 30px;
+}
+form input {
+  height: 20px;
+  width: 90%;
+  padding: 0.2rem;
+  margin: 0.2rem 0.5rem 1rem 0.5rem;
+  border: 2px solid #000;
+  border-radius: 5px;
+}
+form .form-group-btn {
+  text-align: center;
+}
+.form-title {
+  text-align: center;
+}
+footer {
+  background-color: var(--success);
+  padding: 2rem 0 0.5rem 0;
+  width: 100%;
+  text-align: center;
+}
 
 @media (prefers-color-scheme: light) {
   :root {

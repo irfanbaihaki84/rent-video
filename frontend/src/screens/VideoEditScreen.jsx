@@ -15,7 +15,7 @@ export default function VideoEditScreen() {
   const [videoSlug, setVideoSlug] = useState('');
   const [description, setDescription] = useState('');
   const [image, setImage] = useState('');
-  const [url, setUrl] = useState('');
+  // const [url, setUrl] = useState('');
   const [stock, setStock] = useState('');
   const [price, setPrice] = useState('');
 
@@ -66,6 +66,7 @@ export default function VideoEditScreen() {
       <h1>Video Edit {videoId}</h1>
       <div className="content">
         <form onSubmit={editHandler}>
+          <h1 className="form-title">Video Edit</h1>
           <div className="form-group">
             <p className="form-label">Video Name</p>
             <input
@@ -106,7 +107,7 @@ export default function VideoEditScreen() {
               placeholder="Image"
             />
           </div>
-          <div className="form-group">
+          {/* <div className="form-group">
             <p className="form-label">URL</p>
             <input
               type="text"
@@ -116,7 +117,7 @@ export default function VideoEditScreen() {
               placeholder="URL"
               disabled
             />
-          </div>
+          </div> */}
 
           <div className="form-group">
             <p className="form-label">Stock</p>
@@ -139,9 +140,9 @@ export default function VideoEditScreen() {
             />
           </div>
 
-          <div className="form-group">
+          <div className="form-group-btn">
             <button type="submit" className="btn-success">
-              Save
+              Update
             </button>
           </div>
         </form>

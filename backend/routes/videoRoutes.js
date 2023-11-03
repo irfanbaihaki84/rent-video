@@ -58,6 +58,10 @@ videoRouter.post('/create', async (req, res) => {
       url: videoUrl,
       stock: req.body.stock,
       price: req.body.price,
+      category: {
+        genre1: req.body.genre1,
+        genre2: req.body.genre2,
+      },
     });
     // console.log(newVideo.videoName);
     // console.log(newVideo.image);
@@ -79,6 +83,7 @@ videoRouter.post('/create', async (req, res) => {
       stock: video.stock,
       // price: newVideo.price,
       price: video.price,
+      category: video.category,
     });
   } catch (error) {
     console.log(error.message);
@@ -118,6 +123,8 @@ videoRouter.put('/update/:id', async (req, res) => {
     video.url = video.url || videoUrl;
     video.stock = req.body.stock || video.stock;
     video.price = req.body.price || video.price;
+    video.category.genre1 = req.body.genre1;
+    video.category.genre2 = req.body.genre2;
 
     const updateVideo = await video.save();
     res.send({
@@ -129,6 +136,7 @@ videoRouter.put('/update/:id', async (req, res) => {
       videoUrl: updateVideo.url,
       stock: updateVideo.stock,
       price: updateVideo.price,
+      category: updateVideo.category,
     });
   } else {
     res.status(400).send({ message: 'Video not found!' });
@@ -189,6 +197,13 @@ videoRouter.get('/pagin', async (req, res) => {
       message: 'Server error',
     });
   }
+});
+
+// menampilkan data berdasar category
+videoRouter.get('/categories', async (req, res) => {
+  const cate = await Video.find({ category: 'fiksi' });
+  console.log('categories: ', cate);
+  // res.send(cat)
 });
 
 // menampilkan data dari id yang di cari

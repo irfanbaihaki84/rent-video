@@ -10,12 +10,42 @@ function App() {
     <BrowserRouter>
       <div className="container">
         <div className="nav-bar">
-          <a href="/" className="nav-bar-link">
-            Home
-          </a>
-          <a href="/videoAdd" className="nav-bar-link">
-            Add Video
-          </a>
+          <div className="nav-item">
+            <h1 className="nav-bar-link">Vidios.com</h1>
+            <a href="/" className="nav-bar-link">
+              Home
+            </a>
+            <a href="/videoAdd" className="nav-bar-link">
+              Add Video
+            </a>
+            <ul>
+              <li>
+                <p className="dropdown-title">Category</p>
+                <ul className="dropdown">
+                  <li>
+                    <a href="http://" target="_blank" rel="noopener noreferrer">
+                      HTML
+                    </a>
+                  </li>
+                  <li>
+                    <a href="http://" target="_blank" rel="noopener noreferrer">
+                      CSS
+                    </a>
+                  </li>
+                  <li>
+                    <a href="http://" target="_blank" rel="noopener noreferrer">
+                      JavaScript
+                    </a>
+                  </li>
+                  <li>
+                    <a href="http://" target="_blank" rel="noopener noreferrer">
+                      NodeJS
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
         </div>
         <Routes>
           <Route path="/" element={<HomeScreen />} />

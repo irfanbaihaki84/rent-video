@@ -16,6 +16,8 @@ export default function VideoDetailScreen() {
   const [url, setUrl] = useState('');
   const [stock, setStock] = useState('');
   const [price, setPrice] = useState('');
+  const [genre1, setGenre1] = useState('');
+  const [genre2, setGenre2] = useState('');
 
   const editVideo = (videoId) => {
     navigate(`/videoEdit/${videoId}`);
@@ -37,7 +39,7 @@ export default function VideoDetailScreen() {
           `http://localhost:3002/api/videos/${id}`
         );
         setVideoId(data._id);
-        // console.log('setVideoId: ', data._id);
+        console.log('data: ', data.category);
         setVideoName(data.videoName);
         setVideoSlug(data.videoSlug);
         setDescription(data.description);
@@ -45,6 +47,8 @@ export default function VideoDetailScreen() {
         setUrl(data.url);
         setStock(data.stock);
         setPrice(data.price);
+        setGenre1(data.category.genre1);
+        setGenre2(data.category.genre2);
       } catch (error) {
         console.log(error.message);
       }
@@ -67,6 +71,8 @@ export default function VideoDetailScreen() {
             <div className="card-item">
               <p>Stock: {stock}</p>
               <p>Price: {price}</p>
+              <p>Genre1: {genre1}</p>
+              <p>Genre2: {genre2}</p>
               <p>Description: {description}.</p>
             </div>
             <div className="card-button">

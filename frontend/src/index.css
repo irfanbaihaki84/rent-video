@@ -131,9 +131,12 @@ button:focus-visible {
   width: 100%;
   padding: 2rem 0 0.5rem 0;
 }
+.nav-item {
+  display: flex;
+}
 .nav-bar .nav-bar-link {
   font-size: 2rem;
-  margin: 1rem 0.7rem 1rem 0.7rem;
+  padding: 1rem 0.7rem 1rem 0.7rem;
 }
 a {
   font-weight: 500;
@@ -143,14 +146,49 @@ a {
 a:hover {
   color: var(--danger);
 }
+ul {
+  list-style: none;
+  background: var(--success);
+}
+ul li {
+  display: inline-block;
+  position: relative;
+}
+ul li a,
+p.dropdown-title {
+  display: block;
+  padding: 1rem 0.7rem 1rem 0.7rem;
+  color: #000;
+  text-decoration: none;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 500;
+}
+ul li ul.dropdown li {
+  display: block;
+}
+ul li ul.dropdown {
+  width: 100%;
+  background: var(--success);
+  position: absolute;
+  z-index: 999;
+  display: none;
+}
+ul li a:hover {
+  background: #0f7e00;
+}
+ul li:hover ul.dropdown {
+  display: block;
+}
 form {
   padding: 1.5rem 1rem 1rem 1rem;
   border: 1px solid #000;
   border-radius: 30px;
   margin-bottom: 0.2em;
 }
-form input {
-  height: 20px;
+form input,
+select {
+  height: 30px;
   width: 90%;
   padding: 0.2rem;
   margin: 0.2rem 0.5rem 1rem 0.5rem;
@@ -221,5 +259,8 @@ footer {
   }
   h1 {
     font-size: 100%;
+  }
+  .nav-item {
+    flex-direction: column;
   }
 }

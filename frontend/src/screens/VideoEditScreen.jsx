@@ -18,6 +18,8 @@ export default function VideoEditScreen() {
   // const [url, setUrl] = useState('');
   const [stock, setStock] = useState('');
   const [price, setPrice] = useState('');
+  const [genre1, setGenre1] = useState('');
+  const [genre2, setGenre2] = useState('');
 
   const editHandler = async (e) => {
     e.preventDefault();
@@ -32,6 +34,8 @@ export default function VideoEditScreen() {
           // url,
           stock,
           price,
+          genre1,
+          genre2,
         }
       );
       console.log('data: ', data);
@@ -66,7 +70,7 @@ export default function VideoEditScreen() {
       <h1>Id {videoId}</h1>
       <div className="content">
         <form onSubmit={editHandler}>
-          <h1 className="form-title">Video Edit</h1>
+          <h1 className="form-title">Edit Video</h1>
           <div className="form-group">
             <p className="form-label">Video Name</p>
             <input
@@ -118,6 +122,53 @@ export default function VideoEditScreen() {
               disabled
             />
           </div> */}
+          <div className="form-group">
+            <p className="form-label">Genre 1</p>
+            {/* <input
+              type="text"
+              className="form-control"
+              value={genre1}
+              onChange={(e) => setGenre1(e.target.value)}
+              placeholder="Genre 1"
+            /> */}
+            <select
+              name="genre1"
+              id="genre1"
+              onChange={(e) => setGenre1(e.target.value)}
+            >
+              <option value="Fiksi" selected>
+                Fiksi
+              </option>
+              <option value="Fakta">Fakta</option>
+              <option value="Series">Series</option>
+              <option value="Anime">Anime</option>
+            </select>
+          </div>
+          <div className="form-group">
+            <p className="form-label">Genre 2</p>
+            {/* <input
+              type="text"
+              className="form-control"
+              value={genre2}
+              onChange={(e) => setGenre2(e.target.value)}
+              placeholder="Genre 2"
+            /> */}
+            <select
+              name="genre2"
+              id="genre2"
+              onChange={(e) => setGenre2(e.target.value)}
+            >
+              <option value="Aksi" selected>
+                Aksi
+              </option>
+              <option value="Drama">Drama</option>
+              <option value="Komedi">Komedi</option>
+              <option value="Percintaan">Percintaan</option>
+              <option value="Isekai">Isekai</option>
+              <option value="Fiksi">Fiksi</option>
+              <option value="Fakta">Fakta</option>
+            </select>
+          </div>
 
           <div className="form-group">
             <p className="form-label">Stock</p>

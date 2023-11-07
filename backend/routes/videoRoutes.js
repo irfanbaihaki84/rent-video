@@ -155,7 +155,6 @@ videoRouter.delete('/delete/:id', async (req, res) => {
   }
 });
 
-// const ITEM_PERPAGE = 3
 // menampilkan data dengan cara pagination / perhalaman
 videoRouter.get('/pagin', async (req, res) => {
   // console.log('masuk PAGIN');
@@ -171,13 +170,18 @@ videoRouter.get('/pagin', async (req, res) => {
 
     // const total = await Video.estimatedDocumentCount();
     const total = await Video.countDocuments();
-    // console.log('totol: ', total);
+    // console.log('total: ', total);
 
     const pages = Math.ceil(total / pageSize);
     // console.log('pages: ', pages);
 
     // untuk menampung suluruh query psrams di sini
     let query = await Video.find().skip(skip).limit(pageSize);
+
+    const category = await Video.find({}, { category: 1 })
+      .skip(skip)
+      .limit(pageSize);
+    console.log('category :', category);
 
     const hasil = query;
     // console.log('hasil: ', hasil);
@@ -188,6 +192,7 @@ videoRouter.get('/pagin', async (req, res) => {
       page,
       pages,
       pageSize,
+      category,
       data: hasil,
     });
   } catch (error) {
@@ -201,9 +206,25 @@ videoRouter.get('/pagin', async (req, res) => {
 
 // menampilkan data berdasar category
 videoRouter.get('/categories', async (req, res) => {
-  const cate = await Video.find({ category: 'fiksi' });
-  console.log('categories: ', cate);
-  // res.send(cat)
+  try {
+    // untuk menampung suluruh query psrams di sini
+    let result = await Video.find({}, { category: 1 });
+
+    const hasil = result;
+    console.log('category.hasil: ', hasil);
+
+    res.status(200).json({
+      status: 'success',
+      count: hasil.length,
+      data: hasil,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      status: 'error',
+      message: 'Server error',
+    });
+  }
 });
 
 // menampilkan data dari id yang di cari

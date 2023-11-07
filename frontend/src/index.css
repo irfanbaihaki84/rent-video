@@ -46,6 +46,7 @@ body {
   flex-wrap: wrap;
   justify-content: center;
 }
+/* card class section */
 .card {
   background-color: var(--card);
   width: 250px;
@@ -71,18 +72,29 @@ body {
   width: 100%;
   border-radius: 8px;
 }
+.card-fluid .img {
+  height: 70vh;
+  width: 30vw;
+  border-radius: 8px;
+  padding-right: 1.5rem;
+}
 .img .card-img {
   height: 200px;
   width: 100%;
   border-radius: 8px;
 }
 .img .card-img-fluid {
-  height: 200vh;
+  height: 70vh;
   width: 30vw;
   border-radius: 8px;
   padding-right: 1.5rem;
 }
-.card-body .card-title {
+.card-body .card-title1 {
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: 700;
+}
+.card-body .card-title2 {
   text-align: center;
   font-size: 1.5em;
   font-weight: 700;
@@ -95,6 +107,7 @@ body {
 .card-body .card-button {
   text-align: center;
 }
+/* button section */
 button {
   margin: 0.3rem 0.3rem;
   border-radius: 8px;
@@ -126,6 +139,7 @@ button:focus-visible {
 .btn-danger {
   background-color: var(--danger);
 }
+/* nav-bar class section */
 .nav-bar {
   background-color: var(--success);
   width: 100%;
@@ -146,40 +160,9 @@ a {
 a:hover {
   color: var(--danger);
 }
-ul {
-  list-style: none;
-  background: var(--success);
-}
-ul li {
-  display: inline-block;
-  position: relative;
-}
-ul li a,
-p.dropdown-title {
-  display: block;
-  padding: 1rem 0.7rem 1rem 0.7rem;
-  color: #000;
-  text-decoration: none;
-  text-align: center;
-  font-size: 2rem;
-  font-weight: 500;
-}
-ul li ul.dropdown li {
-  display: block;
-}
-ul li ul.dropdown {
-  width: 100%;
-  background: var(--success);
-  position: absolute;
-  z-index: 999;
-  display: none;
-}
-ul li a:hover {
-  background: #0f7e00;
-}
-ul li:hover ul.dropdown {
-  display: block;
-}
+/* dropdown button section */
+
+/* form section */
 form {
   padding: 1.5rem 1rem 1rem 1rem;
   border: 1px solid #000;
@@ -201,13 +184,14 @@ form .form-group-btn {
 .form-title {
   text-align: center;
 }
+/* footer section */
 footer {
   background-color: var(--success);
   padding: 2rem 0 0.5rem 0;
   width: 100%;
   text-align: center;
 }
-
+/* resposive screen section */
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -252,10 +236,19 @@ footer {
   }
   .card-fluid {
     flex-direction: column;
+    justify-content: center;
+    padding: 0.2rem;
+    margin: 0.2rem;
+  }
+  .card-fluid .img {
+    width: 100%;
   }
   .img .card-img-fluid {
     width: 100%;
     padding-right: 0;
+  }
+  .card-body .card-title2 {
+    font-size: 1rem;
   }
   h1 {
     font-size: 100%;

@@ -58,6 +58,8 @@ export default function VideoEditScreen() {
         setDescription(data.description);
         setStock(data.stock);
         setPrice(data.price);
+        setGenre1(data.category.genre1);
+        setGenre2(data.category.genre2);
       } catch (error) {
         console.log(error.message);
       }
@@ -136,9 +138,7 @@ export default function VideoEditScreen() {
               id="genre1"
               onChange={(e) => setGenre1(e.target.value)}
             >
-              <option value="Fiksi" selected>
-                Fiksi
-              </option>
+              <option defaultValue={genre1}>{genre1}</option>
               <option value="Fakta">Fakta</option>
               <option value="Series">Series</option>
               <option value="Anime">Anime</option>
@@ -158,9 +158,7 @@ export default function VideoEditScreen() {
               id="genre2"
               onChange={(e) => setGenre2(e.target.value)}
             >
-              <option value="Aksi" selected>
-                Aksi
-              </option>
+              <option defaultValue={genre2}>{genre2}</option>
               <option value="Drama">Drama</option>
               <option value="Komedi">Komedi</option>
               <option value="Percintaan">Percintaan</option>
@@ -171,7 +169,7 @@ export default function VideoEditScreen() {
           </div>
 
           <div className="form-group">
-            <p className="form-label">Stock</p>
+            <p className="form-label">Stock ,pcs</p>
             <input
               type="number"
               className="form-control"
@@ -181,7 +179,7 @@ export default function VideoEditScreen() {
             />
           </div>
           <div className="form-group">
-            <p className="form-label">Price</p>
+            <p className="form-label">Price Rp.</p>
             <input
               type="number"
               className="form-control"

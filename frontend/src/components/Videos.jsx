@@ -1,30 +1,25 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
-// const fetcher = (url) => fetcher(url).then((res) => res.json());
-// console.log('fetcher: ', fetcher);
+import axios from 'axios';
+// import Genre from './Genre';
 
 export default function Videos() {
   const navigate = useNavigate();
   const [videos, setVideos] = useState([]);
-  console.log('test0: ', videos);
-  console.log('video.length: ', videos.length);
+  console.log('videos: ', videos);
+  console.log('videos.length: ', videos.length);
+
+  const [category, setCategory] = useState([]);
+  console.log('category: ', category);
+
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(3);
   const [pageCount, setPageCount] = useState(0);
-
-  const [id, setId] = useState('');
-  console.log('id: ', id);
 
   useEffect(() => {
     try {
       // getVideos();
       getVideoPage();
-
-      // if (data) {
-      //   data.pagination.pageCount(setPageCount);
-      // }
     } catch (error) {
       console.log(error.message);
     }
@@ -35,14 +30,6 @@ export default function Videos() {
   //   setVideos(result.data);
   // };
 
-  // const getVideoPage = async () => {
-  //   const result = await axios.get(
-  //     `http://localhost:3002/api/videos/videos?page=${page}&limit=${limit}`
-  //   );
-  //   setVideos(result.data);
-  // };
-
-  // let data = {};
   const getVideoPage = async () => {
     const pageData = await axios.get(
       `http://localhost:3002/api/videos/pagin?page=${page}&limit=${limit}`
@@ -52,8 +39,7 @@ export default function Videos() {
     setPage(pageData.data.page);
     setLimit(pageData.data.pageSize);
     setPageCount(pageData.data.pages);
-
-    setId(pageData.data.data._id);
+    setCategory(pageData.data.category);
   };
 
   function previousHandler() {
@@ -101,11 +87,13 @@ export default function Videos() {
             </div>
             <div className="card-body">
               <a href={`/videoDetail/${video._id}`}>
-                <h3 className="card-title">{video.videoName}</h3>
+                <h3 className="card-title1">{video.videoName}</h3>
               </a>
               <div className="card-item">
-                <p>Stock: {video.stock}</p>
-                <p>Price: {video.price}</p>
+                <p>Stock: {video.stock},pcs</p>
+                <p>Price: Rp.{video.price}</p>
+                {/* <p>Genre: {video.category.genre1}, {video.category.genre2}</p> */}
+                {/* <Genre /> */}
               </div>
               <div className="card-button">
                 <button

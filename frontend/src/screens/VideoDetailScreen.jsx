@@ -65,14 +65,15 @@ export default function VideoDetailScreen() {
             <img className="card-img-fluid" src={url} alt={videoName} />
           </div>
           <div className="card-body">
-            <h3 className="card-title">{videoName}</h3>
-            <h4 className="card-title">{videoId}</h4>
-            <h4 className="card-title">{videoSlug}</h4>
+            <h3 className="card-title1">{videoName}</h3>
+            <h4 className="card-title2">{videoId}</h4>
+            <h4 className="card-title2">{videoSlug}</h4>
             <div className="card-item">
-              <p>Stock: {stock}</p>
-              <p>Price: {price}</p>
-              <p>Genre1: {genre1}</p>
-              <p>Genre2: {genre2}</p>
+              <p>Stock: {stock},pcs</p>
+              <p>Price: Rp.{price}</p>
+              <p>
+                Genre: {genre1}, {genre2}
+              </p>
               <p>Description: {description}.</p>
             </div>
             <div className="card-button">

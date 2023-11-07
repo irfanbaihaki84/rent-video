@@ -18,33 +18,20 @@ function App() {
             <a href="/videoAdd" className="nav-bar-link">
               Add Video
             </a>
-            <ul>
-              <li>
-                <p className="dropdown-title">Category</p>
-                <ul className="dropdown">
-                  <li>
-                    <a href="http://" target="_blank" rel="noopener noreferrer">
-                      HTML
-                    </a>
-                  </li>
-                  <li>
-                    <a href="http://" target="_blank" rel="noopener noreferrer">
-                      CSS
-                    </a>
-                  </li>
-                  <li>
-                    <a href="http://" target="_blank" rel="noopener noreferrer">
-                      JavaScript
-                    </a>
-                  </li>
-                  <li>
-                    <a href="http://" target="_blank" rel="noopener noreferrer">
-                      NodeJS
-                    </a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
+
+            <div className="dropdown">
+              <a href="">Categories</a>
+              <div className="dropdown-group">
+                <div className="dropdown-menu">
+                  <div className="dropdown-heading">Fiksi</div>
+                  <div className="dropdown-links">
+                    <a href="">Call of Duty</a>
+                    <a href="">X-Man</a>
+                    <a href="">Beautyful Mind</a>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <Routes>

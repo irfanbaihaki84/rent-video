@@ -9,8 +9,11 @@ export default function Videos() {
   console.log('videos: ', videos);
   console.log('videos.length: ', videos.length);
 
-  const [category, setCategory] = useState([]);
-  console.log('category: ', category);
+  // const [category, setCategory] = useState([]);
+  // console.log('category: ', category);
+
+  // const categoryNew = new Map([[1, category]]);
+  // console.log('categoryNew: ', categoryNew);
 
   const [page, setPage] = useState(1);
   const [limit, setLimit] = useState(3);
@@ -39,7 +42,7 @@ export default function Videos() {
     setPage(pageData.data.page);
     setLimit(pageData.data.pageSize);
     setPageCount(pageData.data.pages);
-    setCategory(pageData.data.category);
+    // setCategory(pageData.data.category);
   };
 
   function previousHandler() {
@@ -92,18 +95,20 @@ export default function Videos() {
               <div className="card-item">
                 <p>Stock: {video.stock},pcs</p>
                 <p>Price: Rp.{video.price}</p>
-                {/* <p>Genre: {video.category.genre1}, {video.category.genre2}</p> */}
+                {/* <p>
+                  Genre: {video.category.genre1}, {video.category.genre2}
+                </p> */}
                 {/* <Genre /> */}
               </div>
               <div className="card-button">
                 <button
-                  className="btn-warning"
+                  className="btn btn-warning"
                   onClick={() => editVideo(video._id)}
                 >
                   Edit
                 </button>
                 <button
-                  className="btn-danger"
+                  className="btn btn-danger"
                   onClick={() => deleteVideo(video._id)}
                 >
                   Delete
@@ -122,7 +127,7 @@ export default function Videos() {
         />
         <br />
         <button
-          className="btn-info"
+          className="btn btn-info"
           onClick={previousHandler}
           disabled={page === 1}
         >
@@ -130,7 +135,7 @@ export default function Videos() {
         </button>
         {page} / {pageCount}
         <button
-          className="btn-info"
+          className="btn btn-info"
           onClick={nextHandler}
           disabled={page === pageCount}
         >

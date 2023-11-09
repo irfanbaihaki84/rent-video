@@ -67,7 +67,7 @@ export default function VideoDetailScreen() {
           <div className="card-body">
             <h3 className="card-title1">{videoName}</h3>
             <h4 className="card-title2">{videoId}</h4>
-            <h4 className="card-title2">{videoSlug}</h4>
+            {/* <h4 className="card-title2">{videoSlug}</h4> */}
             <div className="card-item">
               <p>Stock: {stock},pcs</p>
               <p>Price: Rp.{price}</p>
@@ -77,10 +77,13 @@ export default function VideoDetailScreen() {
               <p>Description: {description}.</p>
             </div>
             <div className="card-button">
-              <button className="btn-warning" onClick={() => editVideo(id)}>
+              <button className="btn btn-warning" onClick={() => editVideo(id)}>
                 Edit
               </button>
-              <button className="btn-danger" onClick={() => deleteVideo(id)}>
+              <button
+                className="btn btn-danger"
+                onClick={() => deleteVideo(id)}
+              >
                 Delete
               </button>
             </div>

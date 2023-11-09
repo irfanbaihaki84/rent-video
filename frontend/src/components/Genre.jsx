@@ -29,9 +29,9 @@ export default function Genre() {
   };
   return (
     <div>
-      {categories.map((category) => (
-        <p key={category._id}>
-          Genre: {category.genre1}, {category.genre1}
+      {categories.map((cate) => (
+        <p key={cate._id}>
+          Genre: {cate.category.genre1}, {cate.category.genre2}
         </p>
       ))}
     </div>

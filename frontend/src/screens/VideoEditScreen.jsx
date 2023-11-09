@@ -139,9 +139,17 @@ export default function VideoEditScreen() {
               onChange={(e) => setGenre1(e.target.value)}
             >
               <option defaultValue={genre1}>{genre1}</option>
-              <option value="Fakta">Fakta</option>
-              <option value="Series">Series</option>
+              <option value="Action">Action</option>
+              <option value="Adventure">Adventure</option>
               <option value="Anime">Anime</option>
+              <option value="Comedy">Comedy</option>
+              <option value="Drama">Drama</option>
+              <option value="Horor">Horor</option>
+              <option value="Reincarnation">Reincarnation</option>
+              <option value="Romance">Romance</option>
+              <option value="Series">Series</option>
+              <option value="Fiction">Fiction</option>
+              <option value="Real">Real</option>
             </select>
           </div>
           <div className="form-group">
@@ -159,12 +167,17 @@ export default function VideoEditScreen() {
               onChange={(e) => setGenre2(e.target.value)}
             >
               <option defaultValue={genre2}>{genre2}</option>
+              <option value="Action">Action</option>
+              <option value="Adventure">Adventure</option>
+              <option value="Anime">Anime</option>
+              <option value="Comedy">Comedy</option>
               <option value="Drama">Drama</option>
-              <option value="Komedi">Komedi</option>
-              <option value="Percintaan">Percintaan</option>
-              <option value="Isekai">Isekai</option>
-              <option value="Fiksi">Fiksi</option>
-              <option value="Fakta">Fakta</option>
+              <option value="Horor">Horor</option>
+              <option value="Reincarnation">Reincarnation</option>
+              <option value="Romance">Romance</option>
+              <option value="Series">Series</option>
+              <option value="Fiction">Fiction</option>
+              <option value="Real">Real</option>
             </select>
           </div>
 
@@ -190,7 +203,7 @@ export default function VideoEditScreen() {
           </div>
 
           <div className="form-group-btn">
-            <button type="submit" className="btn-success">
+            <button type="submit" className="btn btn-success">
               Update
             </button>
           </div>

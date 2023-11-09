@@ -20,14 +20,36 @@ function App() {
             </a>
 
             <div className="dropdown">
-              <a href="">Categories</a>
-              <div className="dropdown-group">
+              <button className="dropdown-button">Categories</button>
+              {/* <a className="dropdown-button" href="#">Categories</a> */}
+              <div className="dropdown-group formation-grid">
                 <div className="dropdown-menu">
                   <div className="dropdown-heading">Fiksi</div>
                   <div className="dropdown-links">
-                    <a href="">Call of Duty</a>
-                    <a href="">X-Man</a>
-                    <a href="">Beautyful Mind</a>
+                    <a className="dropdown-link" href="">
+                      Call of Duty
+                    </a>
+                    <a className="dropdown-link" href="">
+                      X-Man
+                    </a>
+                    <a className="dropdown-link" href="">
+                      Beautyful Mind
+                    </a>
+                  </div>
+                </div>
+
+                <div className="dropdown-menu">
+                  <div className="dropdown-heading">Comedy</div>
+                  <div className="dropdown-links">
+                    <a className="dropdown-link" href="">
+                      Call of Duty
+                    </a>
+                    <a className="dropdown-link" href="">
+                      X-Man
+                    </a>
+                    <a className="dropdown-link" href="">
+                      Beautyful Mind
+                    </a>
                   </div>
                 </div>
               </div>

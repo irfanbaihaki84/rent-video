@@ -18,13 +18,13 @@ buat file .env di folder rent-video/backend
 
 touch .env
 
-di dalam file .env masukan
+di dalam file .env ketikan
 
 PORT=3002
 
 MONGODB_URI=mongodb://127.0.0.1:27017/rent
 
-bukan aplikasi MongoDBCompass, buat conllection rent
+bukan aplikasi MongoDBCompass, buat collection rent
 
 masuk ke dalam folder rent-video/backend/routes file videoRoutes.jsx
 
@@ -35,11 +35,17 @@ aktifkan komentar // import data from '../data.js';
 untuk membuat collection pada mongodb jalankan
 
 // membuat collection video di database rent
+
 videoRouter.get('/seed', async (req, res) => {
+
 // buka browser tulis http://localhost:3002/api/seed dan tekan enter untuk mengesekusi
+
 await Video.deleteOne({});
+
 const createdVideos = await Video.insertMany(data.videos);
+
 res.send({ createdVideos });
+
 });
 
 #====CARA MENJALANKAN PROJECT=====#
@@ -57,21 +63,35 @@ npm i express mongoose dotenv --save
 npm i nodemon --save-dev
 
 buka file package.json dan tambahkan "type" dan "start":
+
 "name": "backend",
+
 =>"type": "module",<=
+
 "version": "1.0.0",
+
 "description": "",
+
 "main": "index.js",
+
 "scripts": {
+
 =>"start": "nodemon server.js",<=
+
 "test": "echo \"Error: no test specified\" && exit 1"
+
 },
+
 #=========#
 
 buat file server.js dan tambahkan (di dalam folder backend):
+
 import express from 'express';
+
 import dotenv from 'dotenv';
+
 import mongoose from 'mongoose';
+
 import videoRouter from './routes/videoRoutes.js';
 
 dotenv.config();
@@ -92,16 +112,21 @@ const port = process.env.PORT;
 app.listen(port, () => {
 console.log(`server at http://localhost:${port}`);
 });
+
 #=========#
 
 buat file .env dan tambahkan (di dalam folder backend)
+
 PORT=3002
+
 MONGODB_URI=mongodb://127.0.0.1:27017/rent
+
 #=========#
 
 buat folder models di dalam folder backend
 
 dalam folder models buat file videoModel.js dan tambahkan
+
 import mongoose from 'mongoose';
 
 const videoSchema = new mongoose.Schema(
@@ -118,12 +143,17 @@ timestamps: true,
 );
 
 const Video = mongoose.model('Video', videoSchema);
+
 export default Video;
+
 #=========#
 
 buat file data.js dan tambahkan (di dalam folder backend)
+
 const data = {
+
 videos: [
+
 {
 videoName: 'videoSatu',
 videoSlug: 'video-satu',
@@ -131,6 +161,7 @@ description: 'film aksi satu',
 stock: 1,
 price: 25000,
 },
+
 {
 videoName: 'videoDua',
 videoSlug: 'video-dua',
@@ -138,6 +169,7 @@ description: 'film aksi dua',
 stock: 2,
 price: 26000,
 },
+
 {
 videoName: 'videoTiga',
 videoSlug: 'video-tiga',
@@ -145,6 +177,7 @@ description: 'film aksi tiga',
 stock: 3,
 price: 27000,
 },
+
 {
 videoName: 'videoEmpat',
 videoSlug: 'video-empat',
@@ -152,6 +185,7 @@ description: 'film aksi empat',
 stock: 4,
 price: 28000,
 },
+
 {
 videoName: 'videoLima',
 videoSlug: 'video-lima',
@@ -159,6 +193,7 @@ description: 'film aksi lima',
 stock: 5,
 price: 29000,
 },
+
 {
 videoName: 'videoEnam',
 videoSlug: 'video-enam',
@@ -166,6 +201,7 @@ description: 'film aksi enam',
 stock: 6,
 price: 30000,
 },
+
 {
 videoName: 'videoTujuh',
 videoSlug: 'video-tujuh',
@@ -173,6 +209,7 @@ description: 'film aksi tujuh',
 stock: 7,
 price: 31000,
 },
+
 {
 videoName: 'videoDelapan',
 videoSlug: 'video-delapan',
@@ -180,6 +217,7 @@ description: 'film aksi delapan',
 stock: 8,
 price: 32000,
 },
+
 {
 videoName: 'videoSembilan',
 videoSlug: 'video-sembilan',
@@ -187,6 +225,7 @@ description: 'film aksi sembilan',
 stock: 9,
 price: 33000,
 },
+
 {
 videoName: 'videoSepuluh',
 videoSlug: 'video-sepuluh',
@@ -194,9 +233,13 @@ description: 'film aksi sepuluh',
 stock: 10,
 price: 34000,
 },
+
 ],
+
 };
+
 export default data;
+
 #=========#
 
 buat folder routes di dalam folder backend

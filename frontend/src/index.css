@@ -97,13 +97,13 @@ body {
   margin: 0.2em;
 }
 .card-fluid .img {
-  height: 70vh;
+  height: 100%;
   width: 30vw;
   border-radius: 8px;
   padding-right: 1.5rem;
 }
 .img .card-img-fluid {
-  height: 70vh;
+  height: 100%;
   width: 30vw;
   border-radius: 8px;
   padding-right: 1.5rem;

@@ -62,7 +62,7 @@ npm i express mongoose dotenv --save
 
 npm i nodemon --save-dev
 
-buka file package.json dan tambahkan "type" dan "start":
+buka file package.json dan ketikan "type" dan "start":
 
 "name": "backend",
 
@@ -84,7 +84,7 @@ buka file package.json dan tambahkan "type" dan "start":
 
 #=========#
 
-buat file server.js dan tambahkan (di dalam folder backend):
+buat file server.js dan ketikan (di dalam folder backend):
 
 import express from 'express';
 
@@ -115,7 +115,7 @@ console.log(`server at http://localhost:${port}`);
 
 #=========#
 
-buat file .env dan tambahkan (di dalam folder backend)
+buat file .env dan ketikan (di dalam folder backend)
 
 PORT=3002
 
@@ -125,7 +125,7 @@ MONGODB_URI=mongodb://127.0.0.1:27017/rent
 
 buat folder models di dalam folder backend
 
-dalam folder models buat file videoModel.js dan tambahkan
+dalam folder models buat file videoModel.js dan ketikan
 
 import mongoose from 'mongoose';
 
@@ -148,7 +148,7 @@ export default Video;
 
 #=========#
 
-buat file data.js dan tambahkan (di dalam folder backend)
+buat file data.js dan ketikan (di dalam folder backend)
 
 const data = {
 
@@ -244,20 +244,25 @@ export default data;
 
 buat folder routes di dalam folder backend
 
-dalam folder routes buat file videoRoutes.js dan tambahkan
+dalam folder routes buat file videoRoutes.js dan ketikan
+
 import express from 'express';
+
 import Video from '../models/videoModel.js';
+
 import data from '../data.js';
 
 const videoRouter = express.Router();
 
 // menampilkan seluruh data collection video
+
 videoRouter.get('/', async (req, res) => {
 const videos = await Video.find({});
 res.send(videos);
 });
 
 // membuat collection video di database rent
+
 videoRouter.get('/seed', async (req, res) => {
 await Video.deleteOne({});
 const createdVideos = await Video.insertMany(data.videos);
@@ -265,6 +270,7 @@ res.send({ createdVideos });
 });
 
 // menyimpan data pada collection video
+
 videoRouter.post('/create', async (req, res) => {
 const newVideo = new Video({
 videoName: req.params.videoName,
@@ -272,6 +278,7 @@ videoSlug: req.params.videoSlug,
 stock: req.params.stock,
 price: req.params.price,
 });
+
 const video = await newVideo.save();
 res.send({
 \_id: video.\_id,
@@ -283,6 +290,7 @@ price: video.price,
 });
 
 // update data pada collection video
+
 videoRouter.put('/update/:id', async (req, res) => {
 const video = await Video.findById(req.params.id);
 if (video) {
@@ -301,19 +309,25 @@ video.price = req.body.price || video.price;
     });
 
 } else {
+
 res.status(400).send({ message: 'Video not found!' });
 }
+
 });
 
 // delete data pada collection video
+
 videoRouter.delete('/delete/:id', async (req, res) => {
 const video = await videoRouter.findById(req.params.id);
 if (video) {
 await video.remove();
 res.send({ message: 'Video deleted successfully' });
+
 } else {
+
 res.send({ message: 'Video not found!' });
 }
+
 });
 
 export default videoRouter;

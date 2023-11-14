@@ -130,16 +130,25 @@ dalam folder models buat file videoModel.js dan ketikan
 import mongoose from 'mongoose';
 
 const videoSchema = new mongoose.Schema(
+
 {
+
 videoName: { type: String, required: true },
+
 videoSlug: { type: String, required: true, unique: true },
+
 description: { type: String, required: true },
+
 stock: { type: Number, required: true },
+
 price: { type: Number, required: true },
+
 },
+
 {
 timestamps: true,
 }
+
 );
 
 const Video = mongoose.model('Video', videoSchema);
@@ -299,17 +308,16 @@ video.videoSlug = req.body.videoSlug || video.videoSlug;
 video.stock = req.body.stock || video.stock;
 video.price = req.body.price || video.price;
 
-    const updateVideo = await video.save();
-    res.send({
-      _id: updateVideo._id,
-      videoName: updateVideo.videoName,
-      videoSlug: updateVideo.videoSlug,
-      stock: updateVideo.stock,
-      price: updateVideo.price,
-    });
+const updateVideo = await video.save();
+res.send({
+\_id: updateVideo.\_id,
+videoName: updateVideo.videoName,
+videoSlug: updateVideo.videoSlug,
+stock: updateVideo.stock,
+price: updateVideo.price,
+});
 
 } else {
-
 res.status(400).send({ message: 'Video not found!' });
 }
 
@@ -324,7 +332,6 @@ await video.remove();
 res.send({ message: 'Video deleted successfully' });
 
 } else {
-
 res.send({ message: 'Video not found!' });
 }
 

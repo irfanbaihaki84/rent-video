@@ -207,8 +207,12 @@ videoRouter.get('/pagin', async (req, res) => {
 // menampilkan data berdasar category
 videoRouter.get('/categories', async (req, res) => {
   try {
-    // untuk menampung suluruh query psrams di sini
-    let result = await Video.find({}, { category: 1 });
+    // untuk menampung suluruh query params di sini
+    // let result = await Video.find({ 'category.genre': 'Action' });
+    // let result = await Video.find({}, { category: 1 });
+
+    // menampilkan data yg sama
+    let result = await Video.find().distinct('category');
 
     const hasil = result;
     console.log('category.hasil: ', hasil);

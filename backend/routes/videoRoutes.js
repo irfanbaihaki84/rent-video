@@ -208,8 +208,22 @@ videoRouter.get('/pagin', async (req, res) => {
 videoRouter.get('/categories', async (req, res) => {
   try {
     // untuk menampung suluruh query params di sini
-    // let result = await Video.find({ 'category.genre': 'Action' });
+    // let result = await Video.find({ 'category.genre2': 'Comedy' });
     // let result = await Video.find({}, { category: 1 });
+
+    // tampilkan data dengan genre1 dgn nilai Action dari category
+    // dan urutkan descending dari nilai price
+    // let result = await Video.aggregate([
+    //   { $match: { 'category.genre1': 'Action' } },
+    //   {
+    //     $project: {
+    //       name: '$videoName',
+    //       stock: '$stock',
+    //       price: '$price',
+    //     },
+    //   },
+    //   { $sort: { price: -1 } },
+    // ]);
 
     // menampilkan data yg sama
     let result = await Video.find().distinct('category');

@@ -40,6 +40,20 @@ videoRouter.get('/categories', async (req, res) => {
     //   },
     // ]);
 
+    // tampilkan data dengan genre1 dgn nilai Action dari category
+    // dan urutkan descending dari nilai price
+    // let result = await Video.aggregate([
+    //   { $match: { 'category.genre1': 'Action' } },
+    //   {
+    //     $project: {
+    //       name: '$videoName',
+    //       stock: '$stock',
+    //       price: '$price',
+    //     },
+    //   },
+    //   { $sort: { price: -1 } },
+    // ]);
+
     // let result = await Video.aggregate([
     //   {
     //     $group: {

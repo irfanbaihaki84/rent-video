@@ -10,14 +10,15 @@ export default function VideoDetailScreen() {
 
   const [videoId, setVideoId] = useState(id);
   const [videoName, setVideoName] = useState('');
-  const [videoSlug, setVideoSlug] = useState('');
+  const [genre, setGenre] = useState('');
+  const [company, setCompany] = useState('');
+  const [producer, setProducer] = useState('');
+  const [year, setYear] = useState('');
   const [description, setDescription] = useState('');
+  const [rating, setRating] = useState('');
+  const [price, setPrice] = useState('');
   //   const [image, setImage] = useState('');
   const [url, setUrl] = useState('');
-  const [stock, setStock] = useState('');
-  const [price, setPrice] = useState('');
-  const [genre1, setGenre1] = useState('');
-  const [genre2, setGenre2] = useState('');
 
   const editVideo = (videoId) => {
     navigate(`/videoEdit/${videoId}`);
@@ -39,16 +40,17 @@ export default function VideoDetailScreen() {
           `http://localhost:3002/api/videos/${id}`
         );
         setVideoId(data._id);
-        console.log('data: ', data.category);
+        console.log('data: ', data.production);
         setVideoName(data.videoName);
-        setVideoSlug(data.videoSlug);
+        setGenre(data.genre);
+        setCompany(data.production.company);
+        setProducer(data.production.producer);
+        setYear(data.production.year);
         setDescription(data.description);
+        setRating(data.rating);
+        setPrice(data.price);
         // setImage(data.image);
         setUrl(data.url);
-        setStock(data.stock);
-        setPrice(data.price);
-        setGenre1(data.category.genre1);
-        setGenre2(data.category.genre2);
       } catch (error) {
         console.log(error.message);
       }
@@ -69,11 +71,12 @@ export default function VideoDetailScreen() {
             <h4 className="card-title2">{videoId}</h4>
             {/* <h4 className="card-title2">{videoSlug}</h4> */}
             <div className="card-item">
-              <p>Stock: {stock},pcs</p>
+              <p>Genre: {genre}</p>
+              <p>Rating: {rating},stars</p>
               <p>Price: Rp.{price}</p>
-              <p>
-                Genre: {genre1}, {genre2}
-              </p>
+              <p>Company: {company}</p>
+              <p>Producer: {producer}</p>
+              <p>Year: {year}</p>
               <p>Description: {description}.</p>
             </div>
             <div className="card-button">

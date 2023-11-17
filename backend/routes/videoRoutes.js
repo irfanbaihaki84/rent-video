@@ -15,9 +15,9 @@ videoRouter.get('/', async (req, res) => {
 // membuat collection video di database rent
 videoRouter.get('/seed', async (req, res) => {
   // buka browser tulis http://localhost:3002/api/seed dan tekan enter untuk mengesekusi
-  //   await Video.deleteOne({});
-  //   const createdVideos = await Video.insertMany(data.videos);
-  //   res.send({ createdVideos });
+  await Video.deleteOne({});
+  const createdVideos = await Video.insertMany(data.videos);
+  res.send({ createdVideos });
 });
 
 // menyimpan data pada collection video
@@ -52,16 +52,17 @@ videoRouter.post('/create', async (req, res) => {
 
     const newVideo = new Video({
       videoName: req.body.videoName,
-      videoSlug: req.body.videoSlug,
+      genre: req.body.genre,
+      production: {
+        company: req.body.company,
+        producer: req.body.producer,
+        year: req.body.year,
+      },
       description: req.body.description,
+      rating: req.body.rating,
+      price: req.body.price,
       image: nameImage,
       url: videoUrl,
-      stock: req.body.stock,
-      price: req.body.price,
-      category: {
-        genre1: req.body.genre1,
-        genre2: req.body.genre2,
-      },
     });
     // console.log(newVideo.videoName);
     // console.log(newVideo.image);
@@ -69,21 +70,14 @@ videoRouter.post('/create', async (req, res) => {
 
     const video = await newVideo.save();
     res.send({
-      // videoName: newVideo.videoName,
       videoName: video.videoName,
-      // videoSlug: newVideo.videoSlug,
-      videoSlug: video.videoSlug,
-      // description: newVideo.description,
+      genre: video.genre,
+      production: video.production,
       description: video.description,
-      // image: newVideo.image,
-      image: video.image,
-      // url: newVideo.url,
-      url: video.url,
-      // stock: newVideo.stock,
-      stock: video.stock,
-      // price: newVideo.price,
+      rating: video.rating,
       price: video.price,
-      category: video.category,
+      image: video.image,
+      url: video.url,
     });
   } catch (error) {
     console.log(error.message);
@@ -117,26 +111,27 @@ videoRouter.put('/update/:id', async (req, res) => {
   const video = await Video.findById(req.params.id);
   if (video) {
     video.videoName = req.body.videoName || video.videoName;
-    video.videoSlug = req.body.videoSlug || video.videoSlug;
+    video.genre = req.body.genre || video.genre;
+    video.production.company = req.body.company || video.production.company;
+    video.production.producer = req.body.producer || video.production.producer;
+    video.production.year = req.body.year || video.production.year;
     video.description = req.body.description || video.description;
+    video.rating = req.body.rating || video.rating;
+    video.price = req.body.price || video.price;
     video.image = video.image || nameImage;
     video.url = video.url || videoUrl;
-    video.stock = req.body.stock || video.stock;
-    video.price = req.body.price || video.price;
-    video.category.genre1 = req.body.genre1;
-    video.category.genre2 = req.body.genre2;
 
     const updateVideo = await video.save();
     res.send({
       _id: updateVideo._id,
       videoName: updateVideo.videoName,
-      videoSlug: updateVideo.videoSlug,
+      genre: updateVideo.genre,
+      production: updateVideo.production,
       description: updateVideo.description,
+      rating: updateVideo.rating,
+      price: updateVideo.price,
       videoImage: updateVideo.image,
       videoUrl: updateVideo.url,
-      stock: updateVideo.stock,
-      price: updateVideo.price,
-      category: updateVideo.category,
     });
   } else {
     res.status(400).send({ message: 'Video not found!' });
@@ -178,10 +173,10 @@ videoRouter.get('/pagin', async (req, res) => {
     // untuk menampung suluruh query psrams di sini
     let query = await Video.find().skip(skip).limit(pageSize);
 
-    const category = await Video.find({}, { category: 1 })
+    const production = await Video.find({}, { production: 1 })
       .skip(skip)
       .limit(pageSize);
-    console.log('category :', category);
+    console.log('production :', production);
 
     const hasil = query;
     // console.log('hasil: ', hasil);
@@ -192,7 +187,7 @@ videoRouter.get('/pagin', async (req, res) => {
       page,
       pages,
       pageSize,
-      category,
+      production,
       data: hasil,
     });
   } catch (error) {

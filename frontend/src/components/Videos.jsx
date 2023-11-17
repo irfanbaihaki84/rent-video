@@ -93,7 +93,7 @@ export default function Videos() {
                 <h3 className="card-title1">{video.videoName}</h3>
               </a>
               <div className="card-item">
-                <p>Stock: {video.stock},pcs</p>
+                <p>Rating: {video.rating},stars</p>
                 <p>Price: Rp.{video.price}</p>
                 {/* <p>
                   Genre: {video.category.genre1}, {video.category.genre2}

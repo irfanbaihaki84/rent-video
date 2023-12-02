@@ -2,20 +2,24 @@ import express from 'express';
 import Video from '../models/videoModel.js';
 import path from 'path';
 import { createHash } from 'crypto';
-// import data from '../data.js';
+import data from '../data.js';
 
 const videoRouter = express.Router();
 
 // menampilkan seluruh data dari collection video
 videoRouter.get('/', async (req, res) => {
-  const videos = await Video.find();
-  res.send(videos);
+  try {
+    const videos = await Video.find();
+    res.status(200).send(videos);
+  } catch (error) {
+    res.status(500).send({ message: error });
+  }
 });
 
 // membuat collection video di database rent
 videoRouter.get('/seed', async (req, res) => {
   // buka browser tulis http://localhost:3002/api/seed dan tekan enter untuk mengesekusi
-  await Video.deleteOne({});
+  // await Video.deleteOne({});
   const createdVideos = await Video.insertMany(data.videos);
   res.send({ createdVideos });
 });
@@ -80,7 +84,8 @@ videoRouter.post('/create', async (req, res) => {
       url: video.url,
     });
   } catch (error) {
-    console.log(error.message);
+    // console.log(error.message);
+    res.status(401).send(error);
   }
 });
 
@@ -144,9 +149,9 @@ videoRouter.delete('/delete/:id', async (req, res) => {
   if (video) {
     // await video.remove();
     await video.deleteOne();
-    res.send({ message: 'Video deleted successfully' });
+    res.status(200).send({ message: 'Video deleted successfully' });
   } else {
-    res.send({ message: 'Video not found!' });
+    res.status(404).send({ message: 'Video not found!' });
   }
 });
 
@@ -176,7 +181,7 @@ videoRouter.get('/pagin', async (req, res) => {
     const production = await Video.find({}, { production: 1 })
       .skip(skip)
       .limit(pageSize);
-    console.log('production :', production);
+    // console.log('production :', production);
 
     const hasil = query;
     // console.log('hasil: ', hasil);
@@ -200,7 +205,7 @@ videoRouter.get('/pagin', async (req, res) => {
 });
 
 // menampilkan data berdasar category
-videoRouter.get('/categories', async (req, res) => {
+videoRouter.get('/genres', async (req, res) => {
   try {
     // untuk menampung suluruh query params di sini
     // let result = await Video.find({ 'category.genre2': 'Comedy' });
@@ -221,10 +226,10 @@ videoRouter.get('/categories', async (req, res) => {
     // ]);
 
     // menampilkan data yg sama
-    let result = await Video.find().distinct('category');
+    let result = await Video.find().distinct('genre');
 
     const hasil = result;
-    console.log('category.hasil: ', hasil);
+    console.log('genre.hasil: ', hasil);
 
     res.status(200).json({
       status: 'success',
@@ -242,8 +247,12 @@ videoRouter.get('/categories', async (req, res) => {
 
 // menampilkan data dari id yang di cari
 videoRouter.get('/:videoId', async (req, res) => {
-  const videos = await Video.findById(req.params.videoId);
-  res.send(videos);
+  try {
+    const videos = await Video.findById(req.params.videoId);
+    res.status(200).send(videos);
+  } catch (error) {
+    res.status(404).send({ message: error });
+  }
 });
 
 export default videoRouter;

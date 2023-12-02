@@ -49,7 +49,7 @@ export default function VideoAddScreen() {
 
   return (
     <div className="container">
-      <h1>Add Video</h1>
+      <h1>Form</h1>
       <div className="content">
         <form onSubmit={addHandler}>
           <h1 className="form-title">Add Video</h1>
@@ -84,11 +84,12 @@ export default function VideoAddScreen() {
               <option value="Comedy">Comedy</option>
               <option value="Drama">Drama</option>
               <option value="Horor">Horor</option>
+              <option value="Real-History">Real-History</option>
+              <option value="Race">Race</option>
               <option value="Reincarnation">Reincarnation</option>
               <option value="Romance">Romance</option>
               <option value="Series">Series</option>
               <option value="Sci-fy">Sci-fy</option>
-              <option value="Real">Real</option>
             </select>
           </div>
           <div className="form-group">

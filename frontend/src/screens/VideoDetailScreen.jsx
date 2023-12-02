@@ -6,7 +6,7 @@ export default function VideoDetailScreen() {
   const navigate = useNavigate();
   const params = useParams();
   const { id } = params;
-  console.log('videoDetail: ', id);
+  console.log('videoId: ', id);
 
   const [videoId, setVideoId] = useState(id);
   const [videoName, setVideoName] = useState('');
@@ -40,7 +40,7 @@ export default function VideoDetailScreen() {
           `http://localhost:3002/api/videos/${id}`
         );
         setVideoId(data._id);
-        console.log('data: ', data.production);
+        console.log('production: ', data.production);
         setVideoName(data.videoName);
         setGenre(data.genre);
         setCompany(data.production.company);

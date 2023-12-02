@@ -15,8 +15,8 @@ export default function Videos() {
   // const categoryNew = new Map([[1, category]]);
   // console.log('categoryNew: ', categoryNew);
 
-  const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(3);
+  const [page, setPage] = useState();
+  const [limit, setLimit] = useState();
   const [pageCount, setPageCount] = useState(0);
 
   useEffect(() => {
@@ -94,10 +94,8 @@ export default function Videos() {
               </a>
               <div className="card-item">
                 <p>Rating: {video.rating},stars</p>
-                <p>Price: Rp.{video.price}</p>
-                {/* <p>
-                  Genre: {video.category.genre1}, {video.category.genre2}
-                </p> */}
+                <p>Genre: {video.genre}</p>
+                <p>Company: {video.production.company}</p>
                 {/* <Genre /> */}
               </div>
               <div className="card-button">

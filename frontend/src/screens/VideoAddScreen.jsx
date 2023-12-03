@@ -51,7 +51,7 @@ export default function VideoAddScreen() {
     <div className="container">
       <h1>Form</h1>
       <div className="content">
-        <form onSubmit={addHandler}>
+        <form className="formDisplay" onSubmit={addHandler}>
           <h1 className="form-title">Add Video</h1>
           <div className="form-group">
             <p className="form-label">Video Name</p>

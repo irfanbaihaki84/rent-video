@@ -74,7 +74,7 @@ export default function VideoEditScreen() {
     <div className="container">
       <h1>Id {videoId}</h1>
       <div className="content" key={videoId}>
-        <form onSubmit={editHandler}>
+        <form className="formDisplay" onSubmit={editHandler}>
           <h1 className="form-title">Edit Video</h1>
           <div className="form-group">
             <p className="form-label">Video Name</p>

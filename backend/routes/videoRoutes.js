@@ -175,8 +175,18 @@ videoRouter.get('/pagin', async (req, res) => {
     const pages = Math.ceil(total / pageSize);
     // console.log('pages: ', pages);
 
+    const name = req.query.name || '';
+    console.log('name: ', name);
+
+    // function searchName(name) {
+    //   return Video.videoName === name;
+    // }
+    const nameFillter = name ? { name: { $regex: name, $options: i } } : {};
+
     // untuk menampung suluruh query psrams di sini
-    let query = await Video.find().skip(skip).limit(pageSize);
+    let query = await Video.find({ ...nameFillter })
+      .skip(skip)
+      .limit(pageSize);
 
     const production = await Video.find({}, { production: 1 })
       .skip(skip)

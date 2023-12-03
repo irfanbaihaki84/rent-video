@@ -15,9 +15,10 @@ export default function Videos() {
   // const categoryNew = new Map([[1, category]]);
   // console.log('categoryNew: ', categoryNew);
 
-  const [page, setPage] = useState();
-  const [limit, setLimit] = useState();
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(3);
   const [pageCount, setPageCount] = useState(0);
+  const [name, setName] = useState('');
 
   useEffect(() => {
     try {
@@ -35,7 +36,7 @@ export default function Videos() {
 
   const getVideoPage = async () => {
     const pageData = await axios.get(
-      `http://localhost:3002/api/videos/pagin?page=${page}&limit=${limit}`
+      `http://localhost:3002/api/videos/pagin?page=${page}&limit=${limit}&name=${name}`
     );
     console.log('pageData: ', pageData.data);
     setVideos(pageData.data.data);
@@ -95,6 +96,7 @@ export default function Videos() {
               <div className="card-item">
                 <p>Rating: {video.rating},stars</p>
                 <p>Genre: {video.genre}</p>
+                <p>IDR. {video.price}</p>
                 <p>Company: {video.production.company}</p>
                 {/* <Genre /> */}
               </div>

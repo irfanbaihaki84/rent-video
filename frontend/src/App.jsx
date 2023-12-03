@@ -4,13 +4,13 @@ import HomeScreen from './screens/HomeScreen';
 import VideoDetailScreen from './screens/VideoDetailScreen';
 import VideoAddScreen from './screens/VideoAddScreen';
 import VideoEditScreen from './screens/VideoEditScreen';
-import Navigation from './components/Navigation';
+import NavigationScreen from './screens/NavigationScreen';
 
 function App() {
   return (
     <BrowserRouter>
       <div className="container">
-        <Navigation />
+        <NavigationScreen />
 
         <Routes>
           <Route path="/" element={<HomeScreen />} />
@@ -21,9 +21,8 @@ function App() {
 
         <footer>
           <p className="footer">
-            Create by:{' '}
-            <a href="https://github.com/irfanbaihaki84/rent-video"> Baihaki </a>
-            2023
+            <a href="https://github.com/irfanbaihaki84/rent-video">Baihaki </a>
+            2023 &copy;
           </p>
         </footer>
       </div>

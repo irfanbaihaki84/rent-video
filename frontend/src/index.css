@@ -26,6 +26,7 @@
   --bgcolor: rgb(100, 0, 158);
   --card: rgb(162, 0, 255);
   --nav: rgb(146, 0, 255);
+  /* --coba: background-image: linear-gradient(to bottom right, rgb(100, 0, 158), rgb(239, 3, 247)); */
 }
 body {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -34,6 +35,11 @@ body {
 }
 .container {
   background-color: var(--bgcolor);
+  /* background-image: linear-gradient(
+    to bottom left,
+    rgb(100, 0, 158),
+    rgb(239, 3, 247)
+  ); */
   display: flex;
   flex-direction: column;
   /* flex-wrap: wrap; */
@@ -55,7 +61,7 @@ body {
   width: 250px;
   display: flex;
   flex-direction: column;
-  border: 1px solid #000000;
+  /* border: 1px solid #000000; */
   border-radius: 10px;
   padding: 0.5em;
   margin: 0.2em;
@@ -95,13 +101,13 @@ body {
   background-color: var(--card);
   /* width: 100%; */
   display: flex;
-  border: 1px solid #000000;
+  /* border: 1px solid #000000; */
   border-radius: 10px;
   padding: 0.5em;
-  margin: 0.2em;
+  margin-bottom: 2em;
 }
 .card-fluid .img {
-  height: 100%;
+  height: 70vh;
   width: 30vw;
   border-radius: 8px;
   padding-right: 1.5rem;
@@ -152,7 +158,7 @@ li {
 }
 .navbar {
   background-color: var(--nav);
-  width: 95%;
+  width: 100%;
   min-height: 70px;
   display: flex;
   justify-content: space-between;

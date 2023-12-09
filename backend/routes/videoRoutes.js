@@ -175,25 +175,18 @@ videoRouter.get('/pagin', async (req, res) => {
     const pages = Math.ceil(total / pageSize);
     // console.log('pages: ', pages);
 
-    const name = req.query.name || 'Video Satu';
+    const name = req.query.name || '';
     console.log('name: ', name);
 
-    function searchName(name) {
-      let test = videoName.toLowerCase();
-      test == name;
-    }
-    // const nameFillter = name ? { name: { $regex: name, $options: i } } : {};
-    const nameFillter = name ? { videoName: name } : {};
+    const nameFillter = name
+      ? { videoName: { $regex: name, $options: 'i' } }
+      : {};
 
     // untuk menampung suluruh query params di sini
-    // let query = await Video.find({ videoName: name }).skip(skip).limit(pageSize);
-    // let query = await Video.find({ ...nameFillter }).skip(skip).limit(pageSize)
-    // let query = await Video.find(function (videoName) {
-    //   videoName.includes('Video Satu');
-    // })
-    //   .skip(skip)
-    //   .limit(pageSize);
-    let query = await Video.find().skip(skip).limit(pageSize);
+    let query = await Video.find({ ...nameFillter })
+      .skip(skip)
+      .limit(pageSize);
+    // let query = await Video.find().skip(skip).limit(pageSize);
 
     const production = await Video.find({}, { production: 1 })
       .skip(skip)
